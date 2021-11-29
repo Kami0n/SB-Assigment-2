@@ -24,3 +24,18 @@ In this assigment we will be learning about first three steps in biometric recog
 - deepinsight / insightface -> https://github.com/deepinsight/insightface
 - sthanhng / yoloface -> https://github.com/sthanhng/yoloface
 
+#### Results:
+Čas je izmerjen za 181 izbranih fotografij (WIDER, awards).
+
+- VJ
+  - IoU: 32,44 %
+  - mAP: cant get confidences!
+- insightface
+  - IoU: 87,29 %
+  - mAP: cant get confidences!
+- DSFD
+  - IoU: 85,34 % 
+  - mAP: 0.57198
+- yoloface:
+  - IoU: 79,01 %
+  - mAP: 0.57183

@@ -1,8 +1,6 @@
 import argparse
-import sys
-import os
-
 from detectors.yolo_face.utils import *
+
 printArgs = False
 #####################################################################
 parser = argparse.ArgumentParser()
@@ -20,7 +18,6 @@ parser.add_argument('--src', type=int, default=0,
 parser.add_argument('--output-dir', type=str, default='outputs/',
 					help='path to the output directory')
 args = parser.parse_args()
-
 #####################################################################
 # print the arguments
 if printArgs:
@@ -31,13 +28,6 @@ if printArgs:
 	print('[i] Path to video file: ', args.video)
 	print('###########################################################\n')
 
-# check outputs directory
-if not os.path.exists(args.output_dir):
-	print('==> Creating the {} directory...'.format(args.output_dir))
-	os.makedirs(args.output_dir)
-else:
-	print('==> Skipping create the {} directory...'.format(args.output_dir))
-
 # Give the configuration and weight files for the model and load the network
 # using them.
 net = cv2.dnn.readNetFromDarknet(args.model_cfg, args.model_weights)
@@ -45,22 +35,13 @@ net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 class Detector:
-	
 	def detectFaces(self, img):
-		
 		# Create a 4D blob from a frame.
 		blob = cv2.dnn.blobFromImage(img, 1 / 255, (IMG_WIDTH, IMG_HEIGHT), [0, 0, 0], 1, crop=False)
-
 		# Sets the input to the network
 		net.setInput(blob)
-
 		# Runs the forward pass to get output of the output layers
 		outs = net.forward(get_outputs_names(net))
-
 		# Remove the bounding boxes with low confidence
 		faces, confidences = post_process(img, outs, CONF_THRESHOLD, NMS_THRESHOLD)
-		
 		return faces, confidences
-
-
-

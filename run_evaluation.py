@@ -6,6 +6,7 @@ from pathlib import Path
 import json
 from preprocessing.preprocess import Preprocess
 from metrics.evaluation import Evaluation
+import time
 
 class EvaluateAll:
 
@@ -74,12 +75,10 @@ class EvaluateAll:
             countAllBboxes += len(annot_list)
             
             # Run the detector. It runs a list of all the detected bounding-boxes. In segmentor you only get a mask matrices, but use the iou_compute in the same way.
-            #prediction_list = cascade_detector.detectEars(img)
             #prediction_list, confidences = cascade_detector.detectFaces(img)
             #prediction_list = insightface_detector.detectFaces(img)
             #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
             prediction_list, confidences = yolo_faceDetector.detectFaces(img)
-            #print(confidences)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
@@ -98,16 +97,13 @@ class EvaluateAll:
                 printProgressBar(counter, allImagesNumber, prefix = '  Progress:', suffix = 'Complete', length = 120)
         
         print("\n")
-        #print("Calculating IOU ...")
         miou = np.average(iou_arr)
         print("Average IOU:", f"{miou:.2%}")
         print("\n")
         
         if(mAPEnable):
-            print("\n")
-            #print("Calculating mAP ...")
             mAP = eval.averagePrecision_compute(allTPFP, allConfidences, countAllBboxes)
-            print("mAP:", f"{mAP:.2}")
+            print("mAP:", f"{mAP:.5}")
             print("\n")
 
 # Print iterations progress
@@ -135,4 +131,8 @@ def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, l
 if __name__ == '__main__':
     os.system('cls')
     ev = EvaluateAll()
+    start = time.time() # start stopwatch
     ev.run_evaluation()
+    end = time.time() # end stopwatch
+    timeDiff = (end - start)
+    print("Porabljen čas: ", timeDiff)
