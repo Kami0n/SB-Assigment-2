@@ -16,12 +16,11 @@ class Detector:
 		elif(len(det_listEarsRight) == 0):
 			return det_listEarsLeft
 		return det_listEarsRight
-		
+	
 	def detectFaces(self, img):
-		#det_listFacesAlt = self.cascadeFacesAlt.detectMultiScale(img, 1.08, 1)
-		#return det_listFacesAlt
-		
-		det_listFacesAlt, rejectLevels, levelWeights = self.cascadeFacesAlt.detectMultiScale3(img, scaleFactor=1.08, minNeighbors=1)
+		#det_listFacesAlt, numDetections = self.cascadeFacesAlt.detectMultiScale2(img, scaleFactor=1.08, minNeighbors=1)
+		#return det_listFacesAlt, numDetections
+		det_listFacesAlt, rejectLevels, levelWeights = self.cascadeFacesAlt.detectMultiScale3(img, scaleFactor=1.08, minNeighbors=1, outputRejectLevels = True)
 		return det_listFacesAlt, levelWeights
 
 if __name__ == '__main__':

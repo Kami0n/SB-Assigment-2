@@ -56,10 +56,21 @@ class Evaluation:
         return False
     
     def boundigBoxesPairs(self, predictions, ground_truth, confidences):
+        
+        if not len(predictions):
+            predictions = []
+        elif type(predictions) is np.ndarray:
+            predictions = predictions.tolist()
+        
+        if not len(confidences):
+            confidences = []
+        elif type(confidences) is np.ndarray:
+            confidences = confidences.tolist()
+        
         groundTruthOriginal = copy.deepcopy(ground_truth)
         groundTruthOriginalCopy = copy.deepcopy(ground_truth)
         predictionsOriginal = copy.deepcopy(predictions)
-        confidencesOriginal = copy.deepcopy(confidences).tolist()
+        confidencesOriginal = copy.deepcopy(confidences)
         
         groundTruthSorted = []
         predictionsSorted = []
@@ -159,10 +170,21 @@ class Evaluation:
                     recallTop += 1
                 recall = recallTop / allBboxes
                 recallArray.append(recall)
-                
+            
+            
+            
             curAuc = auc(recallArray,precisionArray)
             allAUC.append(curAuc)
-            
+        
+        fig, ax = plt.subplots()
+        ax.plot(recallArray, precisionArray, color='purple')
+        #add axis labels to plot
+        ax.set_title('Precision-Recall Curve')
+        ax.set_ylabel('Precision')
+        ax.set_xlabel('Recall')
+        plt.axis([0, 1, 0, 1])
+        plt.show()
+        
         meanAUC = sum(allAUC) / len(allAUC)
         return meanAUC
     

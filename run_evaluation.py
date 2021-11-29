@@ -39,17 +39,19 @@ class EvaluateAll:
         import detectors.cascade_detector.detector as cascade_detector
         #import detectors.insightface.detector as insightface_detector
         import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
+        import detectors.yolo_face.detector as yolo_faceDetector
         
         # import detectors.your_super_detector.detector as super_detector
         cascade_detector = cascade_detector.Detector()
         #insightface_detector = insightface_detector.Detector()
         DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
+        yolo_faceDetector = yolo_faceDetector.Detector()
         
         allImagesNumber = len(im_list)
         counter = 0
         printBar = False
         printVerbose = True
-        mAPEnable = False
+        mAPEnable = True
         
         allTPFP = {} # dict
         for threshold in np.arange(0.5, 0.95, 0.05):
@@ -64,23 +66,20 @@ class EvaluateAll:
             if(printVerbose):
                 print("Analysing image: "+im_name)
             
-            # Read an image
-            img = cv2.imread(im_name)
-            
-            # Apply some preprocessing
-            img = preprocess.allPreprocessing(img)
-            
-            # Run the detector. It runs a list of all the detected bounding-boxes. In segmentor you only get a mask matrices, but use the iou_compute in the same way.
-            #prediction_list = cascade_detector.detectEars(img)
-            
-            prediction_list, confidences = cascade_detector.detectFaces(img)
-            #prediction_list = insightface_detector.detectFaces(img)
-            #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
-            
+            img = cv2.imread(im_name) # Read an image
+            img = preprocess.allPreprocessing(img) # Apply some preprocessing
             # Read annotations:
             annot_name = os.path.join(self.annotations_path, Path(os.path.basename(im_name)).stem) + '.txt'
             annot_list = self.get_annotations(annot_name)
             countAllBboxes += len(annot_list)
+            
+            # Run the detector. It runs a list of all the detected bounding-boxes. In segmentor you only get a mask matrices, but use the iou_compute in the same way.
+            #prediction_list = cascade_detector.detectEars(img)
+            #prediction_list, confidences = cascade_detector.detectFaces(img)
+            #prediction_list = insightface_detector.detectFaces(img)
+            #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
+            prediction_list, confidences = yolo_faceDetector.detectFaces(img)
+            #print(confidences)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
@@ -99,14 +98,14 @@ class EvaluateAll:
                 printProgressBar(counter, allImagesNumber, prefix = '  Progress:', suffix = 'Complete', length = 120)
         
         print("\n")
-        print("Calculating IOU ...")
+        #print("Calculating IOU ...")
         miou = np.average(iou_arr)
         print("Average IOU:", f"{miou:.2%}")
         print("\n")
         
         if(mAPEnable):
             print("\n")
-            print("Calculating mAP ...")
+            #print("Calculating mAP ...")
             mAP = eval.averagePrecision_compute(allTPFP, allConfidences, countAllBboxes)
             print("mAP:", f"{mAP:.2}")
             print("\n")
