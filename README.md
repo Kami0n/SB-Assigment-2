@@ -18,3 +18,12 @@ In this assigment we will be learning about first three steps in biometric recog
 3. tested 
 4. tested 
 5. tested 
+
+
+
+Evaluated detectors:
+VJ haar cascade
+hukkelas / DSFD-Pytorch-Inference -> https://github.com/hukkelas/DSFD-Pytorch-Inference
+deepinsight / insightface -> https://github.com/deepinsight/insightface
+sthanhng / yoloface -> https://github.com/sthanhng/yoloface
+
