@@ -19,23 +19,18 @@ In this assigment we will be learning about first three steps in biometric recog
 5. tested 
 
 ### Evaluated detectors:
-- VJ haar cascade
-- hukkelas / DSFD-Pytorch-Inference -> https://github.com/hukkelas/DSFD-Pytorch-Inference
-- deepinsight / insightface -> https://github.com/deepinsight/insightface
-- sthanhng / yoloface -> https://github.com/sthanhng/yoloface
-
 #### Results:
 Čas je izmerjen za 181 izbranih fotografij (WIDER, awards).
 
-- VJ
+- VJ haar cascade
   - IoU: 32,44 %
   - mAP: cant get confidences!
-- insightface
+- deepinsight / insightface -> https://github.com/deepinsight/insightface
   - IoU: 87,29 %
   - mAP: cant get confidences!
-- DSFD
+- hukkelas / DSFD-Pytorch-Inference -> https://github.com/hukkelas/DSFD-Pytorch-Inference
   - IoU: 85,34 % 
   - mAP: 0.57198
-- yoloface:
+- sthanhng / yoloface -> https://github.com/sthanhng/yoloface
   - IoU: 79,01 %
   - mAP: 0.57183
