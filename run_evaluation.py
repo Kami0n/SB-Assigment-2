@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+np.set_printoptions(suppress=True)
 import glob
 import os
 from pathlib import Path
@@ -30,7 +31,6 @@ class EvaluateAll:
             return annot
     
     def run_evaluation(self):
-        
         im_list = sorted(glob.glob(self.images_path + '/*.*', recursive=True))
         iou_arr = []
         preprocess = Preprocess()
@@ -41,12 +41,14 @@ class EvaluateAll:
         #import detectors.insightface.detector as insightface_detector
         import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
         import detectors.yolo_face.detector as yolo_faceDetector
-        
+        import detectors.mxnet_mtcnn_face_detection.detector as mxnet_detector
         # import detectors.your_super_detector.detector as super_detector
-        cascade_detector = cascade_detector.Detector()
+        
+        #cascade_detector = cascade_detector.Detector()
         #insightface_detector = insightface_detector.Detector()
-        DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
-        yolo_faceDetector = yolo_faceDetector.Detector()
+        #DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
+        #yolo_faceDetector = yolo_faceDetector.Detector()
+        mxnet_detector = mxnet_detector.Detector()
         
         allImagesNumber = len(im_list)
         counter = 0
@@ -78,7 +80,8 @@ class EvaluateAll:
             #prediction_list, confidences = cascade_detector.detectFaces(img)
             #prediction_list = insightface_detector.detectFaces(img)
             #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
-            prediction_list, confidences = yolo_faceDetector.detectFaces(img)
+            #prediction_list, confidences = yolo_faceDetector.detectFaces(img)
+            prediction_list, confidences = mxnet_detector.detectFaces(img)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
