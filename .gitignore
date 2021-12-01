@@ -1,3 +1,4 @@
 data/
 detectors/CenterFace
 detectors/libfacedetection
+__pycache__

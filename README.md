@@ -5,7 +5,7 @@ This is my code for second assigment for subject Image-based Biometry.
 ## Goals of second assigment
 In this assigment we will be learning about first three steps in biometric recognition pipeline:
 1. data acquisition
-2. pre-processin
+2. pre-processing
 3. detection (segmentation)
 
 ## What did I do?
@@ -36,3 +36,4 @@ In this assigment we will be learning about first three steps in biometric recog
 - YYuanAnyVision / mxnet_mtcnn_face_detection -> https://github.com/YYuanAnyVision/mxnet_mtcnn_face_detection
   - IoU: 73,50 %
   - mAP: 0.38264
+
