@@ -1,8 +1,12 @@
 {
-    "images_path" : "data/faces/wider_award/images",
-    "annotations_path" : "data/faces/wider_award/annotations",
+    "images_path" : "data/ears/test",
+    "annotations_path" : "data/ears/annotations/detection/test_YOLO_format",
+    
+    
+    "faces_images_path" : "data/faces/wider_award/images",
+    "faces_annotations_path" : "data/faces/wider_award/annotations",
     "wider_award" : "wider_award",
     "one_award" : "one_award",
-    "Original_images_path" : "data/ears/test",
-    "Original_annotations_path" : "data/ears/annotations/detection/test_YOLO_format"
+    "ears_images_path" : "data/ears/test",
+    "ears_annotations_path" : "data/ears/annotations/detection/test_YOLO_format"
 }

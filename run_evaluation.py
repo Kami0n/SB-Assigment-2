@@ -37,7 +37,7 @@ class EvaluateAll:
         eval = Evaluation()
         
         # Change the following detector and/or add your detectors below
-        #import detectors.cascade_detector.detector as cascade_detector
+        import detectors.cascade_detector.detector as cascade_detector
         #import detectors.insightface.detector as insightface_detector
         #import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
         #import detectors.yolo_face.detector as yolo_faceDetector
@@ -49,7 +49,7 @@ class EvaluateAll:
         # import detectors.your_super_detector.detector as super_detector
        
         
-        #cascade_detector = cascade_detector.Detector()
+        cascade_detector = cascade_detector.Detector()
         #insightface_detector = insightface_detector.Detector()
         #DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
         #yolo_faceDetector = yolo_faceDetector.Detector()
@@ -60,7 +60,7 @@ class EvaluateAll:
         counter = 0
         printBar = False
         printVerbose = True
-        mAPEnable = True
+        mAPEnable = False
         showBoxes = False
         
         allTPFP = {} # dict
@@ -84,13 +84,17 @@ class EvaluateAll:
             countAllBboxes += len(annot_list)
             
             # Run the detector. It runs a list of all the detected bounding-boxes. In segmentor you only get a mask matrices, but use the iou_compute in the same way.
+            
+            # Faces
             #prediction_list, confidences = cascade_detector.detectFaces(img)
             #prediction_list = insightface_detector.detectFaces(img)
             #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
             #prediction_list, confidences = yolo_faceDetector.detectFaces(img)
             #prediction_list, confidences = mxnet_detector.detectFaces(img)
             
-            prediction_list, confidences = my_yolo_detector.detectEars(img)
+            # Ears
+            prediction_list, confidences = cascade_detector.detectEars(img)
+            #prediction_list, confidences = my_yolo_detector.detectEars(img)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)

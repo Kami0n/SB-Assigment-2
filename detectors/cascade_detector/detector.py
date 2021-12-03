@@ -12,10 +12,10 @@ class Detector:
 		det_listEarsRight = self.cascadeEarsRight.detectMultiScale(img, 1.08, 1)
 		
 		if(len(det_listEarsLeft) > 0 and len(det_listEarsRight)>0):
-			return np.concatenate((det_listEarsLeft, det_listEarsRight), axis=0)
+			return np.concatenate((det_listEarsLeft, det_listEarsRight), axis=0), []
 		elif(len(det_listEarsRight) == 0):
-			return det_listEarsLeft
-		return det_listEarsRight
+			return det_listEarsLeft, []
+		return det_listEarsRight, []
 	
 	def detectFaces(self, img):
 		#det_listFacesAlt, numDetections = self.cascadeFacesAlt.detectMultiScale2(img, scaleFactor=1.08, minNeighbors=1)

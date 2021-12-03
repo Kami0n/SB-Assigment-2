@@ -1,7 +1,8 @@
 data/
 detectors/CenterFace
-__pycache__
+__pycache__/
+*.pyc
 detectors/yoloDetect_ears/yolov3_training_final.weights
 metrics/__pycache__
 metrics/__pycache__/evaluation.cpython-38.pyc
-*.pyc
+

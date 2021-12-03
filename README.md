@@ -17,12 +17,13 @@ In this assigment we will be learning about first three steps in biometric recog
 3. evaluated insightface
 4. evaluated DSFD-Pytorch-Inference
 5. evaluated yoloface
-6. trained my own yolov3 ear detector
 
-### Evaluated detectors:
-#### Results:
+6. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
+7. built yolo darknet
+8. trained my own yolov3 ear detector
 
-##### Faces:
+### Results:
+#### Evaluated detectors for faces :
 - VJ haar cascade (faces)
   - IoU: 32,44 %
   - mAP: cant get confidences!
@@ -39,9 +40,9 @@ In this assigment we will be learning about first three steps in biometric recog
   - IoU: 73,50 %
   - mAP: 0.38264
 
-##### Ears:
+#### Evaluated detectors for ears:
 - VJ haar cascade (ears)
-  - IoU: 32,44 %
+  - IoU: 22,30 %
   - mAP: cant get confidences!
 - my own yolov3 ear detector:
   - IoU: 66,12 %
