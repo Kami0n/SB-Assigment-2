@@ -37,24 +37,31 @@ class EvaluateAll:
         eval = Evaluation()
         
         # Change the following detector and/or add your detectors below
-        import detectors.cascade_detector.detector as cascade_detector
+        #import detectors.cascade_detector.detector as cascade_detector
         #import detectors.insightface.detector as insightface_detector
-        import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
-        import detectors.yolo_face.detector as yolo_faceDetector
-        import detectors.mxnet_mtcnn_face_detection.detector as mxnet_detector
+        #import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
+        #import detectors.yolo_face.detector as yolo_faceDetector
+        #import detectors.mxnet_mtcnn_face_detection.detector as mxnet_detector
+        
+        
+        import detectors.yoloDetect_ears.detector as my_yolo_detector
+         
         # import detectors.your_super_detector.detector as super_detector
+       
         
         #cascade_detector = cascade_detector.Detector()
         #insightface_detector = insightface_detector.Detector()
         #DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
         #yolo_faceDetector = yolo_faceDetector.Detector()
-        mxnet_detector = mxnet_detector.Detector()
+        #mxnet_detector = mxnet_detector.Detector()
+        my_yolo_detector = my_yolo_detector.Detector()
         
         allImagesNumber = len(im_list)
         counter = 0
         printBar = False
         printVerbose = True
         mAPEnable = True
+        showBoxes = False
         
         allTPFP = {} # dict
         for threshold in np.arange(0.5, 0.95, 0.05):
@@ -81,7 +88,9 @@ class EvaluateAll:
             #prediction_list = insightface_detector.detectFaces(img)
             #prediction_list, confidences = DSFDPtI_detector.detectFaces(img)
             #prediction_list, confidences = yolo_faceDetector.detectFaces(img)
-            prediction_list, confidences = mxnet_detector.detectFaces(img)
+            #prediction_list, confidences = mxnet_detector.detectFaces(img)
+            
+            prediction_list, confidences = my_yolo_detector.detectEars(img)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
@@ -89,7 +98,7 @@ class EvaluateAll:
             iou_arr.append(iou)
             
             if(mAPEnable):
-                predictionsSorted, groundTruthSorted, confidencesSorted = eval.boundigBoxesPairs(prediction_list, annot_list, confidences)
+                predictionsSorted, groundTruthSorted, confidencesSorted = eval.boundigBoxesPairs(prediction_list, annot_list, confidences, showBoxes)
                 allConfidences.extend(confidencesSorted)
                 for threshold in np.arange(0.5, 0.95, 0.05):
                     TPFP = eval.TPFP_compute(predictionsSorted, groundTruthSorted, threshold/100)
@@ -132,7 +141,7 @@ def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, l
         print()
 
 if __name__ == '__main__':
-    os.system('cls')
+    #os.system('cls')
     ev = EvaluateAll()
     start = time.time() # start stopwatch
     ev.run_evaluation()

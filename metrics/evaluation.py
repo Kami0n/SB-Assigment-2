@@ -55,7 +55,7 @@ class Evaluation:
             return True
         return False
     
-    def boundigBoxesPairs(self, predictions, ground_truth, confidences):
+    def boundigBoxesPairs(self, predictions, ground_truth, confidences, displayBoxes=False):
         
         if not len(predictions):
             predictions = []
@@ -89,13 +89,16 @@ class Evaluation:
                     confidencesOriginal.remove(confid)
                     break
         
-        #fig, ax = plt.subplots()
-        #for predict in predictionsOriginal:
-        #    ax.add_patch(Rectangle((predict[0], predict[1]), predict[2], predict[3], edgecolor = 'blue', fill=False, lw=1))
-        #for ground in groundTruthOriginal:
-        #    ax.add_patch(Rectangle((ground[0], ground[1]), ground[2], ground[3], edgecolor = 'red', fill=False, lw=1))
-        #plt.axis([0, 1024, 0, 682])
-        #plt.show()
+        if displayBoxes:
+            fig, ax = plt.subplots()
+            for ground in groundTruthOriginal:
+                ax.add_patch(Rectangle((ground[0], ground[1]), ground[2], ground[3], edgecolor = 'red', fill=False, lw=1, linestyle = 'dashed'))
+                
+            for predict in predictionsOriginal:
+                ax.add_patch(Rectangle((predict[0], predict[1]), predict[2], predict[3], edgecolor = 'blue', fill=False, lw=1))
+            
+            plt.axis([0, 480, 0, 360])
+            plt.show()
         
         extendZero=[0,0,0,0]
         if(len(predictionsOriginal) > 0):
