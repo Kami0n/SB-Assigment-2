@@ -55,7 +55,7 @@ class EvaluateAll:
         #DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
         #yolo_faceDetector = yolo_faceDetector.Detector()
         #mxnet_detector = mxnet_detector.Detector()
-        #my_yolo_detector = my_yolo_detector.Detector()
+        my_yolo_detector = my_yolo_detector.Detector()
         my_yolov5_detector = my_yolov5_detector.Detector()
         
         allImagesNumber = len(im_list)

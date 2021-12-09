@@ -16,7 +16,7 @@ class Preprocess:
         img = self.histogram_equlization_rgb(img) # This one makes VJ worse
         #img = self.histogramEqualization(img)
         #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR) # for yolov5 !
         
         #img = self.edgeEnhancement(img)
         
