@@ -1,7 +1,7 @@
 import torch
 
 class Detector:
-	model = torch.hub.load('ultralytics/yolov5', 'custom', 'detectors/yolov5_ears/best.pt') 
+	model = torch.hub.load('ultralytics/yolov5', 'custom', 'detectors/yolov5_ears/best_20epoch.pt') 
 	
 	def detectEars(self, img):
 		boxes= []

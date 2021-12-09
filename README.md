@@ -55,6 +55,11 @@ In this assigment we will be learning about first three steps in biometric recog
 - my own trained yolov4 ear detector:
   - IoU: 69,96 %
   - mAP: 0.84375
-- my own trained yolov5 ear detector:
+- my own trained yolov5 ear detector (5 epoch):
   - IoU: 76,74 %
   - mAP: 0.90278
+  - 22 s
+- my own trained yolov5 ear detector (20 epoch):
+  - IoU: 86,45 %
+  - mAP: 0.98264
+  - 34 s
