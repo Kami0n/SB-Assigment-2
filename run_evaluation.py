@@ -45,16 +45,18 @@ class EvaluateAll:
         
         
         import detectors.yoloDetect_ears.detector as my_yolo_detector
+        import detectors.yolov5_ears.detector as my_yolov5_detector
          
         # import detectors.your_super_detector.detector as super_detector
        
         
-        cascade_detector = cascade_detector.Detector()
+        #cascade_detector = cascade_detector.Detector()
         #insightface_detector = insightface_detector.Detector()
         #DSFDPtI_detector = DSFDPytorchInference_detector.Detector()
         #yolo_faceDetector = yolo_faceDetector.Detector()
         #mxnet_detector = mxnet_detector.Detector()
-        my_yolo_detector = my_yolo_detector.Detector()
+        #my_yolo_detector = my_yolo_detector.Detector()
+        my_yolov5_detector = my_yolov5_detector.Detector()
         
         allImagesNumber = len(im_list)
         counter = 0
@@ -94,7 +96,8 @@ class EvaluateAll:
             
             # Ears
             #prediction_list, confidences = cascade_detector.detectEars(img)
-            prediction_list, confidences = my_yolo_detector.detectEars(img)
+            #prediction_list, confidences = my_yolo_detector.detectEars(img)
+            prediction_list, confidences = my_yolov5_detector.detectEars(img)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)

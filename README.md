@@ -19,10 +19,13 @@ In this assigment we will be learning about first three steps in biometric recog
 4. evaluated DSFD-Pytorch-Inference
 5. evaluated yoloface
 
-6. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
-7. built yolo darknet
-8. trained my own yolov3 ear detector
-9. trained my own yolov4 ear detector (stopped after ~90000 iterations)
+6. tested some preprocessing of images (edgeEnhancement, imgNormalize, toGreyScale, histogramEqualization)
+
+7. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
+8. built yolo darknet
+9. trained my own yolov3 ear detector
+10. trained my own yolov4 ear detector (stopped after ~90000 iterations)
+11. trained my own yolov5 ear detector
 
 ### Results:
 #### Evaluated detectors for faces :
@@ -52,3 +55,6 @@ In this assigment we will be learning about first three steps in biometric recog
 - my own trained yolov4 ear detector:
   - IoU: 69,96 %
   - mAP: 0.84375
+- my own trained yolov5 ear detector:
+  - IoU: 76,74 %
+  - mAP: 0.90278

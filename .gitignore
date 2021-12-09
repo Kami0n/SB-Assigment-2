@@ -8,3 +8,4 @@ detectors/yoloDetect_ears/yolov4-tiny_last.weights
 metrics/__pycache__
 metrics/__pycache__/evaluation.cpython-38.pyc
 
+*.pt
