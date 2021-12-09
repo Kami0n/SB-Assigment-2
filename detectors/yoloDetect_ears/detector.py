@@ -5,7 +5,7 @@ from matplotlib.patches import Rectangle
 
 class Detector:
 	# Load Yolo
-	net = cv2.dnn.readNet("detectors/yoloDetect_ears/yolov3_training_final.weights", "detectors/yoloDetect_ears/yolov3_testing.cfg")
+	net = cv2.dnn.readNet("detectors/yoloDetect_ears/yolov4-tiny_last.weights", "detectors/yoloDetect_ears/yolov4-tiny.cfg")
 
 	# Name custom object
 	classes = ["Ear"]

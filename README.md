@@ -13,6 +13,7 @@ In this assigment we will be learning about first three steps in biometric recog
 0. tried to run VJ detector for ears, to get the feeling of how this code framework works
 1. selected dataset WIDER with annotated faces and from this dataset I selected 181 examples (awards)
 2. programmed mAP (mean average precision) metric
+
 3. evaluated VJ haar cascade
 3. evaluated insightface
 4. evaluated DSFD-Pytorch-Inference
@@ -21,6 +22,7 @@ In this assigment we will be learning about first three steps in biometric recog
 6. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
 7. built yolo darknet
 8. trained my own yolov3 ear detector
+9. trained my own yolov4 ear detector (stopped after ~90000 iterations)
 
 ### Results:
 #### Evaluated detectors for faces :
@@ -44,6 +46,9 @@ In this assigment we will be learning about first three steps in biometric recog
 - VJ haar cascade (ears)
   - IoU: 22,30 %
   - mAP: cant get confidences!
-- my own yolov3 ear detector:
+- my own trained yolov3 ear detector:
   - IoU: 66,12 %
   - mAP: 0.78125
+- my own trained yolov4 ear detector:
+  - IoU: 69,96 %
+  - mAP: 0.84375

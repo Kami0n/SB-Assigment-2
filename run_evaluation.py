@@ -60,7 +60,7 @@ class EvaluateAll:
         counter = 0
         printBar = False
         printVerbose = True
-        mAPEnable = False
+        mAPEnable = True
         showBoxes = False
         
         allTPFP = {} # dict
@@ -93,8 +93,8 @@ class EvaluateAll:
             #prediction_list, confidences = mxnet_detector.detectFaces(img)
             
             # Ears
-            prediction_list, confidences = cascade_detector.detectEars(img)
-            #prediction_list, confidences = my_yolo_detector.detectEars(img)
+            #prediction_list, confidences = cascade_detector.detectEars(img)
+            prediction_list, confidences = my_yolo_detector.detectEars(img)
             
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
