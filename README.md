@@ -14,15 +14,18 @@ In this assigment we will be learning about first three steps in biometric recog
 1. selected dataset WIDER with annotated faces and from this dataset I selected 181 examples (awards)
 2. programmed mAP (mean average precision) metric
 
+
 3. evaluated VJ haar cascade
 3. evaluated insightface
 4. evaluated DSFD-Pytorch-Inference
 5. evaluated yoloface
 
+
 6. tested some preprocessing of images (edgeEnhancement, imgNormalize, toGreyScale, histogramEqualization)
 
+
 7. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
-8. built yolo darknet
+8. built yolo darknet (quite complicated process.... :D )
 9. trained my own yolov3 ear detector
 10. trained my own yolov4 ear detector (stopped after ~90000 iterations)
 11. trained my own yolov5 ear detector
