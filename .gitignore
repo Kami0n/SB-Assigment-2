@@ -1,4 +1,5 @@
-data/
+data/ears/*
+data/faces/*
 detectors/CenterFace
 __pycache__/
 

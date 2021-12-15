@@ -1,0 +1,11 @@
+Darknet from:
+https://github.com/AlexeyAB/darknet
+
+
+.\darknet.exe detect cfg/yolov3.cfg yolov3.weights data/0004.png
+
+
+./darknet.exe detector train data/obj.data cfg/yolov3_training.cfg darknet53.conv.74 -dont_show
+
+
+./darknet.exe detector train data/obj.data cfg/yolov4-tiny.cfg yolov4.conv.137 -dont_show

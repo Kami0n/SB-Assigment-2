@@ -10,7 +10,6 @@ In this assigment we will be learning about first three steps in biometric recog
 
 ## What did I do?
 
-
 #### Beginning
 0. tried to run VJ detector for ears, to get the feeling of how this code framework works
 1. selected dataset WIDER with annotated faces and from this dataset I selected 181 examples (awards)
@@ -28,9 +27,12 @@ In this assigment we will be learning about first three steps in biometric recog
 #### My own trained models
 7. installed all the requirements for yolo (Cuda, CUDNN, VisualStudio, CMake...)
 8. built yolo darknet (quite complicated process.... :D )
-9. trained my own yolov3 ear detector
-10. trained my own yolov4 ear detector (stopped after ~90000 iterations)
-11. trained my own yolov5 ear detector
+9. trained my own yolov3 ear detector ( trained on Windows with AlexeyAB/darknet )
+10. trained my own yolov4 ear detector (stopped after ~90000 iterations) ( trained on Windows AlexeyAB/darknet )
+11. trained my own yolov5 ear detector ( trained on Google Colab -> tutorial.ipynb file, because for yolov5 some (CUDA) dll problem arose in my Windows environment )
+
+Results from training yolov5 in training/yolov5/runs/train/
+
 
 ### Results:
 #### Evaluated detectors for faces :
@@ -63,8 +65,6 @@ In this assigment we will be learning about first three steps in biometric recog
 - my own trained yolov5 ear detector (5 epoch):
   - IoU: 76,74 %
   - mAP: 0.90278
-  - 22 s
 - my own trained yolov5 ear detector (20 epoch):
   - IoU: 86,45 %
   - mAP: 0.98264
-  - 34 s
