@@ -37,7 +37,7 @@ class EvaluateAll:
         eval = Evaluation()
         
         # Change the following detector and/or add your detectors below
-        import detectors.cascade_detector.detector as cascade_detector
+        #import detectors.cascade_detector.detector as cascade_detector
         #import detectors.insightface.detector as insightface_detector
         #import detectors.DSFDPytorchInference.detector as DSFDPytorchInference_detector
         #import detectors.yolo_face.detector as yolo_faceDetector
@@ -99,6 +99,9 @@ class EvaluateAll:
             #prediction_list, confidences = my_yolo_detector.detectEars(img)
             prediction_list, confidences = my_yolov5_detector.detectEars(img)
             
+            
+            cropImage(im_name, prediction_list )
+            
             # Only for detection:
             p, gt = eval.prepare_for_detection(prediction_list, annot_list)
             iou = eval.iou_compute(p, gt)
@@ -147,6 +150,29 @@ def printProgressBar(iteration, total, prefix = '', suffix = '', decimals = 1, l
     if iteration == total: 
         print()
 
+def cropImage(imgName, boxes):
+    from PIL import Image
+    
+    # Opens a image in RGB mode
+    im = Image.open(imgName)
+    
+    # Size of the image in pixels (size of original image)
+    # (This is not mandatory)
+    width, height = im.size
+    
+    # Setting the points for cropped image
+    left = 5
+    top = height / 4
+    right = 164
+    bottom = 3 * height / 4
+    
+    # Cropped image of above dimension
+    # (It will not change original image)
+    im1 = im.crop((left, top, right, bottom))
+    
+    # Shows the image in image viewer
+    im1.show()
+	
 if __name__ == '__main__':
     #os.system('cls')
     ev = EvaluateAll()

@@ -1,11 +1,19 @@
 data/
 detectors/CenterFace
 __pycache__/
-*.pyc
+
 detectors/yoloDetect_ears/yolov3_training_final.weights
 detectors/yoloDetect_ears/yolov4-tiny_last.weights
-*.weights
+
 metrics/__pycache__
 metrics/__pycache__/evaluation.cpython-38.pyc
 
+detectors/DSFDPytorchInference/retinaface/models/
+detectors/mxnet_mtcnn_face_detection/models/
+detectors/Yolo_FaceDetection/model_data/
+
+*.onnx
+*.xml
 *.pt
+*.weights
+*.pyc
