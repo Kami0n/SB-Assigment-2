@@ -2,6 +2,7 @@ data/ears/*
 data/faces/*
 detectors/CenterFace
 __pycache__/
+croppedEars/*
 
 detectors/yoloDetect_ears/yolov3_training_final.weights
 detectors/yoloDetect_ears/yolov4-tiny_last.weights

@@ -31,6 +31,8 @@ In this assigment we will be learning about first three steps in biometric recog
 10. trained my own yolov4 ear detector (stopped after ~90000 iterations) ( trained on Windows AlexeyAB/darknet )
 11. trained my own yolov5 ear detector ( trained on Google Colab -> tutorial.ipynb file, because for yolov5 some (CUDA) dll problem arose in my Windows environment )
 
+12. Cropped ears from test images with the help of bounding boxes calculated with yolov5
+
 Results from training yolov5 in training/yolov5/runs/train/
 
 
